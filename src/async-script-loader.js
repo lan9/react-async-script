@@ -95,6 +95,10 @@ export default function makeAsyncScript(getScriptURL, options) {
         script.src = scriptURL;
         script.async = true;
 
+        if (options.nonce) {
+          script.nonce = options.nonce;
+        }
+
         let callObserverFuncAndRemoveObserver = func => {
           if (SCRIPT_MAP[scriptURL]) {
             let mapEntry = SCRIPT_MAP[scriptURL];
